@@ -3,12 +3,7 @@ namespace :db do
     desc 'Dump records from the database into db/seeds.rb'
     task :dump => :environment do
 
-      # config
-      indent          = '  '
-      new_line = "\n"
       seed_rb = ""
-      
-      
       models = ActiveRecord::Base.send(:subclasses)
       
       models.sort{ |a,b| a.name <=> b.name }.each do |model|
@@ -28,11 +23,11 @@ namespace :db do
             attr_s.push("#{k.to_sym.inspect} => #{v}") unless k == 'id'
           end
         
-          create_hash << (i > 0 ? ",#{new_line}" : new_line) << indent << '{ ' << attr_s.join(', ') << ' }'
+          create_hash << (i > 0 ? ",\n" : "\n") << '  ' << '{ ' << attr_s.join(', ') << ' }'
         end
         # / arr.each_with_index
 
-        seed_rb << "#{new_line}#{model_name.pluralize} = #{model_name.camelize}.create([#{create_hash}#{new_line}])#{new_line}"
+        seed_rb << "\n#{model_name.pluralize} = #{model_name.camelize}.create([#{create_hash}\n])\n"
       end
       # /models.sort.each
     
