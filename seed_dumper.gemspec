@@ -28,16 +28,14 @@ Gem::Specification.new do |s|
     "lib/seed_dumper/fetcher.rb",
     "lib/seed_dumper/writer.rb",
     "lib/tasks/seed_dump.rake",
-    "seed_dumper.gemspec",
-    "test/seed_dumper_test.rb",
-    "test/test_helper.rb"
+    "seed_dumper.gemspec"
   ]
   s.homepage = %q{http://github.com/kevTheDev/seed_dumper}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{{Seed Dumper for Rails}}
   s.test_files = [
-    "test/seed_dump_test.rb",
+    "test/seed_dumper_test.rb",
     "test/test_helper.rb"
   ]
 
