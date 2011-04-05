@@ -43,4 +43,4 @@ Result:
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-Copyright (c) 2010 Rob Halff, released under the MIT license
+Copyright (c) 2010 Kevin Edwards, released under the MIT license
