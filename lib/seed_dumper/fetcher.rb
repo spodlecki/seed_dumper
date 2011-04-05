@@ -4,6 +4,8 @@ module SeedDumper
   class Fetcher
     
     def self.fetch_data(klass, options={})
+      model_name = klass.name
+      
       puts "Adding #{model_name.camelize} seeds."
       
       create_hash = ''
@@ -21,7 +23,7 @@ module SeedDumper
       end
       # / records.each_with_index
       
-      return "\n#{model_name.pluralize} = #{model_name.camelize}.create([#{create_hash}\n])\n"
+      return "\n#{model_name.camelize}.create([#{create_hash}\n])\n"
     end
 
   end
