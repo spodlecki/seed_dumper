@@ -1,6 +1,6 @@
 module SeedDumper
   
-  def dump_data(klass)
+  def dump_data(klass, options={})
     puts "Adding #{model_name.camelize} seeds."
     
     create_hash = ''
@@ -22,12 +22,11 @@ module SeedDumper
   end
   
   
-  def write_data(data_string='')
-    model_name = self.name
+  def write_data(klass_name, data_string='')
+    seed_file_name = "#{Rails.root}/db/seeds/#{klass_name}.rb"
     
-    
-    File.open("#{Rails.root}/db/seed_dump.rb", 'w') do |f|
-      puts "Writing #{Rails.root}/db/seed_dump.rb."
+    File.open(seed_file_name, 'w') do |f|
+      puts "Writing #{seed_file_name}."
       f << data_string
     end
     
