@@ -1,3 +1,6 @@
+require 'seed_dumper'
+require 'rails'
+
 module SeedDumper
   class Railtie < Rails::Railtie
 
