@@ -23,12 +23,13 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/seed_dump.rb",
-    "lib/seed_dump/railtie.rb",
-    "lib/seed_dump/seed_dumper.rb",
+    "lib/seed_dumper.rb",
+    "lib/seed_dumper/railtie.rb",
+    "lib/seed_dumper/fetcher.rb",
+    "lib/seed_dumper/writer.rb",
     "lib/tasks/seed_dump.rake",
     "seed_dumper.gemspec",
-    "test/seed_dump_test.rb",
+    "test/seed_dumper_test.rb",
     "test/test_helper.rb"
   ]
   s.homepage = %q{http://github.com/kevTheDev/seed_dumper}
