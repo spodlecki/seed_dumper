@@ -4,12 +4,13 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "seed_dump"
+    gem.name = "seed_dumper"
     gem.summary = "{Seed Dumper for Rails}"
     gem.description = %Q{Dump (parts) of your database to db/seeds.rb to get a headstart creating a meaningful seeds.rb file}
-    gem.email = "rob.halff@gmail.com"
-    gem.homepage = "http://github.com/rhalff/seed_dump"
-    gem.authors = ["Rob Halff"]
+    gem.email = "kev.j.edwards@gmail.com"
+    gem.homepage = "http://github.com/kevTheDev/seed_dump"
+    gem.authors = ["Kevin Edwards"]
+    gem.version = '0.1.0'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

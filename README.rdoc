@@ -1,6 +1,7 @@
-= SeedDump
+= SeedDumper
 
-Seed dump is a simple plugin that adds a rake task named db:seed:dump.
+Seed dumper is a simple plugin that adds a rake task named db:seed:dump.
+Forked and simplified from seed_dump. If you require
 
 It allows you to create a db/seeds.rb from your existing data in the database.
 When there is no data in the database it will generate empty create statements.
@@ -14,9 +15,6 @@ Dump all data directly to db/seeds.rb:
 
   rake db:seed:dump
 
-Dump only data from the users and products table and dump a maximum amount of 10 records:
-
-  $ rake db:seed:dump MODELS=User,Product LIMIT=2
 
 Result:
 
@@ -34,49 +32,6 @@ Result:
     { :id => 2, :password => "234567", :username => "tes2" }
   ])
 
-Append to db/seeds.rb instead of overwriting it:
-
-  rake db:seed:dump APPEND=true
-
-Use another output file instead of db/seeds.rb
-
-  rake db:seed:dump FILE=db/categories.rb
-
-By default the :id column will not be added to the generated Create statements
-If you do want the :id to be included use WITH_ID:
-
-  rake db:seed:dump WITH_ID=1
-
-If you don't want +seed_dump+ to dump any data allready available in the database use NO_DATA.
-
-This will generate the dump with only 1 empty create statement.
-It's up to you to edit these and change the values into something meaningful:
-
-  rake db:seed:dump MODEL=User NO_DATA=1 APPEND=true 
-
-Here is a full example using all of the options above:
-
-  rake db:seed:dump MODELS=Category LIMIT=10 APPEND=true FILE=db/categories.rb WITH_ID=1 NO_DATA=1
-
-== All environment variables
-
-APPEND:
- Append the data to db/seeds.rb instead of overwriting it.
-
-FILE:
- Use a different output file, default: db/seeds.rb
-
-LIMIT:
- Dump no more then this amount of data, default: no limit
-
-MODEL(S):
- A model name or a comma seperated list of models, default: all models
-
-NO_DATA:
- Don't dump any data from the db, instead generate empty Create options 
-
-WITH_ID:
- Inlcude the +:id+ in the create options
 
 == Note on Patches/Pull Requests
  
