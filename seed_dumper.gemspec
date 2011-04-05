@@ -5,7 +5,7 @@ require "base64"
 
 Gem::Specification.new do |s|
   s.name = "seed_dumper"
-  s.version = "0.0.1"
+  s.version = "0.1.0"
   s.authors = ["Kevin Edwards"]
   s.homepage = "http://github.com/kevTheDev/seed_dumper"
   s.summary = "Create seed files for each model from your database data"
