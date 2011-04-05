@@ -1,8 +1,8 @@
-module SeedDump 
+module SeedDumper
   class Railtie < Rails::Railtie
 
     rake_tasks do
-      load "tasks/seed_dump.rake"
+      load "tasks/seed_dumper.rake"
     end 
 
   end

@@ -1,4 +1,7 @@
-module SeedDumper
+# Dumper
+module Dumper
+  
+  require 'seed_dump/railtie' if defined?(Rails)
   
   def dump_data(klass, options={})
     puts "Adding #{model_name.camelize} seeds."
