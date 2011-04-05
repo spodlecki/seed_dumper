@@ -1,22 +1,6 @@
 require 'rubygems'
 require 'rake'
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "seed_dumper"
-    gem.summary = "{Seed Dumper for Rails}"
-    gem.description = %Q{Dump (parts) of your database to db/seeds.rb to get a headstart creating a meaningful seeds.rb file}
-    gem.email = "kev.j.edwards@gmail.com"
-    gem.homepage = "http://github.com/kevTheDev/seed_dumper"
-    gem.authors = ["Kevin Edwards"]
-    gem.version = '0.0.1'
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
-
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
