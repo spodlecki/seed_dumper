@@ -16,7 +16,13 @@ module SeedDumper
       
         record.attributes.each do |key, value|
           value = value.class == Time ? "\"#{value}\"" : value.inspect
-          attr_s.push("#{key.to_sym.inspect} => #{value}") unless key == 'id'
+          
+          value = nil if value.is_a?(String) && value == "\"\""
+          value = nil if value == 'nil' || value == "nil"
+
+          unless value.nil?
+            attr_s.push("#{key.to_sym.inspect} => #{value}") unless key == 'id'
+          end
         end
       
         create_hash << (index > 0 ? ",\n" : "\n") << '  ' << '{ ' << attr_s.join(', ') << ' }'
