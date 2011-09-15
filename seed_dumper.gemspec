@@ -1,18 +1,18 @@
 #!/usr/bin/env gem build
 # encoding: utf-8
+$:.push File.expand_path("../lib", __FILE__)
 
 require "base64"
+require 'seed_dumper'
 
 Gem::Specification.new do |s|
   s.name = "seed_dumper"
-  s.version = "0.1.0"
+  s.version = SeedDumper::VERSION
   s.authors = ["Kevin Edwards"]
   s.homepage = "http://github.com/kevTheDev/seed_dumper"
   s.summary = "Create seed files for each model from your database data"
   s.description = "#{s.summary}."
-  s.cert_chain = nil
   s.email = "kev.j.edwards@gmail.com"
-  s.has_rdoc = true
  
   s.extra_rdoc_files = [
     "README.rdoc"
@@ -22,29 +22,20 @@ Gem::Specification.new do |s|
     "MIT-LICENSE",
     "README.rdoc",
     "Rakefile",
-    "VERSION",
     "lib/seed_dumper.rb",
     "lib/seed_dumper/railtie.rb",
     "lib/seed_dumper/fetcher.rb",
     "lib/seed_dumper/writer.rb",
-    "lib/tasks/seed_dump.rake",
+    "lib/tasks/seed_dumper.rake",
     "seed_dumper.gemspec"
   ]
   s.homepage = %q{http://github.com/kevTheDev/seed_dumper}
   s.require_paths = ["lib"]
+  s.add_runtime_dependency 'rails', '~>3'
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{{Seed Dumper for Rails}}
   s.test_files = [
     "test/seed_dumper_test.rb",
     "test/test_helper.rb"
   ]
-
-
-  begin
-    require "changelog"
-  rescue LoadError
-    warn "You have to have changelog gem installed for post install message"
-  else
-    s.post_install_message = CHANGELOG.new.version_changes
-  end
 end
