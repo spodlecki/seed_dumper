@@ -31,11 +31,28 @@ Gem::Specification.new do |s|
   ]
   s.homepage = %q{http://github.com/kevTheDev/seed_dumper}
   s.require_paths = ["lib"]
-  s.add_runtime_dependency 'rails', '~>3'
+  s.add_runtime_dependency 'rails'
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{{Seed Dumper for Rails}}
   s.test_files = [
     "test/seed_dumper_test.rb",
     "test/test_helper.rb"
   ]
+  s.post_install_message = %q{
+================================================================================
+
+Rails 2.x
+---------
+If you are using SeedDumper with Rails 2.x you will need to place the following at 
+the end of your Rakefile so Rubygems can load the SeedDumper tasks;
+
+  require 'seed_dumper'
+  SeedDumper.load_tasks if defined?(SeedDumper)
+
+Rails 3.x
+---------
+Your work here is done!
+
+================================================================================
+} 
 end
