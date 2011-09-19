@@ -4,32 +4,29 @@ module SeedDumper
   class Fetcher
     
     def self.fetch_data(klass, options={})
+      ignore = ['created_at', 'updated_at']
       model_name = klass.name
       
       puts "Adding #{model_name.camelize} seeds."
       
-      create_hash = ''
-      records = klass.all
-      
-      records.each_with_index do |record, index| 
+      records = klass.all.map do |record| 
         attr_s = [];
       
-        record.attributes.each do |key, value|
+        record.attributes.delete_if { |k, v| ignore.include?(k) }.each do |key, value|
           value = value.class == Time ? "\"#{value}\"" : value.inspect
-          
           value = nil if value.is_a?(String) && value == "\"\""
           value = nil if value == 'nil' || value == "nil"
 
           unless value.nil?
-            attr_s.push("#{key.to_sym.inspect} => #{value}") unless key == 'id'
+            attr_s.push("#{key.to_sym.inspect} => #{value}")# unless key == 'id'
           end
         end
       
-        create_hash << (index > 0 ? ",\n" : "\n") << '  ' << '{ ' << attr_s.join(', ') << ' }'
+        "#{model_name.camelize}.create(#{attr_s.join(', ')})" 
       end
       # / records.each_with_index
       
-      return "\n#{model_name.camelize}.create([#{create_hash}\n])\n"
+      records
     end
 
   end
