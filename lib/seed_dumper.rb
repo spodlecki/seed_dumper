@@ -2,7 +2,7 @@ require 'rake' unless defined?(Rake)
 require 'rails' unless defined?(Rails)
 
 module SeedDumper
-  VERSION = '0.1.2'
+  VERSION = '0.1.3'
   
   autoload :Fetcher, 'seed_dumper/fetcher'
   autoload :Writer, 'seed_dumper/writer'
