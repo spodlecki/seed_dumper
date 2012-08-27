@@ -22,7 +22,9 @@ module SeedDumper
           end
         end
       
-        "#{model_name.camelize}.create(#{attr_s.join(', ')})" 
+        record_dump = "#{model_name.camelize}.create(#{attr_s.join(', ')})"
+        record_dump = "#{record_dump}{|record| record.id = #{record.attributes['id']}}" if options[:dump_id] && record.attributes['id']
+        record_dump
       end
       # / records.each_with_index
       
