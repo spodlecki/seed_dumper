@@ -5,7 +5,7 @@ module SeedDumper
     
     def self.fetch_data(klass, options={})
       ignore = ['created_at', 'updated_at']
-      ignore += options[:ignore] if options[:ignore].is_a? Array
+      ignore += options[:ignore].map(&:to_s) if options[:ignore].is_a? Array
       model_name = klass.name
       
       puts "Adding #{model_name.camelize} seeds."
