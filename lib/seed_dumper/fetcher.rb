@@ -9,8 +9,14 @@ module SeedDumper
       model_name = klass.name
       
       puts "Adding #{model_name.camelize} seeds."
+      search_for = klass.limit(options[:limit])
+      if klass.new.respond_to?(:id)
+        search_for = search_for.order('id')
+      elsif klass.new.respond_to?(:created_at)
+        search_for = search_for.order('id')
+      end
       
-      records = klass.all.map do |record| 
+      records = search_for.all.map do |record| 
         attr_s = [];
       
         record.attributes.delete_if { |k, v| ignore.include?(k) }.each do |key, value|
